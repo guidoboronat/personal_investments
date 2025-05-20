@@ -15,7 +15,12 @@ def timestamp_to_datetime(timestamp_ms):
 
 ### obtener precios
 def obtener_precios_historicos(symbol, interval, start_time, end_time):
-    """Obtiene todas las velas históricas desde Binance entre dos fechas."""
+    """Obtiene todas las velas históricas desde Binance entre dos fechas.
+    Binance tiene un limite de 1000 datos por pegada.
+
+    Entonces hacemos la pegada hasta que se alcance el end_time estipulado.
+    
+    """
 
     url = "https://api.binance.com/api/v3/klines"
     start_ts = convertir_a_timestamp(start_time)

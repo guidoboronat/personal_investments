@@ -1,5 +1,5 @@
 import pandas as pd
-from acciones.Bot_trading import Mark1
+from Trading.acciones.bot_mark1 import Mark1
 from acciones.bot_mark4 import Mark4
 import matplotlib.pyplot as plt
 import datetime
