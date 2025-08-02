@@ -69,3 +69,4 @@ def obtener_precios_historicos(symbol, interval, start_time, end_time):
         time.sleep(0.2)
 
     return resultados
+
