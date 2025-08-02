@@ -119,8 +119,9 @@ print(df.head())
 csv_path = "temp_btc_prices.csv"
 df.to_csv(csv_path, index=False, header=False)
 
-dao = PostgresDB("/Users/guidoboronat/personal/repo trading/personal_investments/Trading/Procesos/secrte.env")
+dao = PostgresDB("/Users/guidoboronat/personal/repo trading/personal_investments/secrte.env")
 # 3. Cargar con COPY
 columns = ['symbol', 'interval', 'open_time', 'open_price', 'high_price', 'low_price', 'close_price', 'volume', 'close_time', 'quote_volume', 'num_trades', 'taker_buy_base', 'taker_buy_quote']
 dao.copy_from_csv(csv_path, "btc_prices_1h", columns)
 dao.cerrar()
+
