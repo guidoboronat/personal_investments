@@ -21,7 +21,7 @@ class TestTradingRules(unittest.TestCase):
             'close_price': [100, 105, 103, 108, 110],
             'sma_5': [100, 102, 103, 105, 107],
             'sma_20': [98, 99, 101, 104, 106],
-            'rsi': [30, 45, 65, 75, 80],
+            'rsi': [25, 45, 65, 75, 80],
         })
 
     def test_price_threshold_rule(self):
