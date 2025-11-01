@@ -1,0 +1,89 @@
+# Default configuration for On-Chain Trading Analysis Toolkit
+
+# Data Source Configuration
+data_source:
+  provider: binance
+  base_url: https://api.binance.com/api/v3
+  rate_limit_delay: 0.2
+  timeout: 30
+
+# Preprocessing Configuration
+preprocessor:
+  remove_outliers: false
+  outlier_threshold: 3.0
+
+# Feature Engineering Configuration
+feature_engineer:
+  add_price_features: true
+  add_volume_features: true
+  add_momentum_features: true
+  add_volatility_features: true
+  momentum_periods: [5, 10, 20]
+  volatility_periods: [5, 10, 20]
+
+# Technical Indicators Configuration
+indicators:
+  moving_average:
+    enabled: true
+    periods: [20, 50, 200]
+    type: sma  # sma or ema
+  
+  rsi:
+    enabled: true
+    period: 14
+  
+  macd:
+    enabled: true
+    fast_period: 12
+    slow_period: 26
+    signal_period: 9
+  
+  bollinger_bands:
+    enabled: true
+    period: 20
+    num_std: 2
+  
+  atr:
+    enabled: true
+    period: 14
+
+# Strategy Configuration
+strategy:
+  initial_balance: 10000.0
+  position_size: 1.0  # Fraction of balance to use per trade
+  max_positions: 1
+
+# Backtesting Configuration
+backtest:
+  initial_balance: 10000.0
+  commission: 0.001  # 0.1%
+  slippage: 0.0005   # 0.05%
+  periods_per_year: 252
+
+# Alert Configuration
+alerts:
+  enabled: true
+  price_alerts:
+    enabled: true
+  volume_alerts:
+    enabled: true
+    threshold_multiplier: 2.0
+  indicator_alerts:
+    enabled: true
+    rsi_oversold: 30
+    rsi_overbought: 70
+
+# Rule Engine Configuration
+rules:
+  logic: AND  # AND or OR
+  enabled_rules:
+    - price_threshold
+    - moving_average_cross
+    - rsi
+    - volume
+
+# Logging Configuration
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: logs/trading_toolkit.log
